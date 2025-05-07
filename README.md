@@ -1,2 +1,2 @@
 # qbit-hardlinker
-Creates hardlinks after downloads are completed
+WIP ~~Creates hardlinks after downloads are completed~~
