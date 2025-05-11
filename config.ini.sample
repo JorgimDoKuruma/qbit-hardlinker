@@ -1,6 +1,7 @@
 [DEFAULT]
 torrent_category = linux_isos
 destination_path = /mnt/isos/
+origin_path = /mnt/downloads/complete/
 qbt_host = localhost
 qbt_port = 8080
 qbt_username = admin
