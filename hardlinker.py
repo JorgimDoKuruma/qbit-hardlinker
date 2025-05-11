@@ -7,13 +7,13 @@ import logging
 import time
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='hardlinker.log', level=logging.INFO, format="%(asctime)-15s %(levelname)-8s %(message)s")
+logging.basicConfig(filename='./config/hardlinker.log', level=logging.INFO, format="%(asctime)-15s %(levelname)-8s %(message)s")
 logger.info('Started')
 
 # import configurations
 
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read("./config/config.ini")
 
 torrent_category = config["DEFAULT"]["torrent_category"]
 destination_path = config["DEFAULT"]["destination_path"]
@@ -35,7 +35,7 @@ match(log_level):
         logging.warning(f"Invalid log level: {log_level}. Defaulting to INFO.")
 # DB connection
 
-db_url = "sqlite:///database.db"
+db_url = "sqlite:///./config/database.db"
 
 engine = sqlalchemy.create_engine(db_url)
 
