@@ -1,3 +1,4 @@
 config.ini
 database.db
 hardlinker.log
+docker-compose.yml

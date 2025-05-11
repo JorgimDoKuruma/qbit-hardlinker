@@ -1,0 +1,8 @@
+services:
+  qbit-hardlinker:
+    build: .
+    container_name: qbit-hardlinker
+    restart: unless-stopped
+    #Customize to your needs
+    #volumes:
+    #  - /path/to/your/config:/hardlinker
