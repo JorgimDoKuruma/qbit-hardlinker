@@ -5,4 +5,4 @@ services:
     restart: unless-stopped
     #Customize to your needs
     #volumes:
-    #  - /path/to/your/config:/hardlinker
+    #  - /path/to/your/config:/qbit-hardlinker
