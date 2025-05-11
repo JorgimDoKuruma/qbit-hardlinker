@@ -4,6 +4,7 @@ import qbittorrentapi
 import configparser
 import os
 import logging
+import time
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='hardlinker.log', level=logging.INFO, format="%(asctime)-15s %(levelname)-8s %(message)s")
@@ -141,12 +142,19 @@ def hard_linker():
         else:
             logging.info(f"Torrent {torrent.name} is not completed yet.")
             
-try:
-    hard_linker()
-except Exception as e:
-    logging.error(f"An error occurred: {e}")
-finally:
-    session.close()
-    engine.dispose()
-    qbt_client.auth_log_out()
-    logging.info("Session closed.")
+def loop():
+    try:
+        hard_linker()
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+    finally:
+        session.close()
+        engine.dispose()
+        qbt_client.auth_log_out()
+        logging.info("Session closed.")
+        
+while True:
+    logging.info("Starting hardlinker loop.")
+    loop()
+    # Sleep for 5 minutes
+    time.sleep(300)

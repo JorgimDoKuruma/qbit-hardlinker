@@ -1,0 +1,2 @@
+qbittorrent-api==2025.5.0
+sqlalchemy==2.0.40
