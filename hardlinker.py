@@ -117,18 +117,18 @@ def hard_linker():
                         try:
                             os.link(src_path, dest_path)
                         except FileExistsError:
-                            logging.info(f"File {file.name} already exists in {dest_path}.")
+                            logging.error(f"File {file.name} already exists in {dest_path} .")
                             continue
                         except FileNotFoundError:
-                            logging.error(f"File {src_path} not found.")
+                            logging.error(f"File {src_path} not found -> {dest_path} .")
                             continue
                         except PermissionError:
-                            logging.error(f"Permission denied for {src_path}.")
+                            logging.error(f"Permission denied for {src_path} .")
                             continue
                         except OSError as e:
                             logging.error(f"Error creating hardlink for {src_path}: {e}")
                             continue
-                        logging.info(f"Created hardlink for {file.name} in {dest_path}.")
+                        logging.info(f"Created hardlink for {file.name} in {dest_path} .")
                         errored = False
                 if errored:
                     logging.error(f"Error creating hardlink for {torrent.name}.")
@@ -138,9 +138,9 @@ def hard_linker():
                     session.commit()
                     logging.info(f"Linked torrent {torrent.name}.")
             else:
-                logging.info(f"Torrent {torrent.name} is already linked.")
+                logging.debug(f"Torrent {torrent.name} is already linked.")
         else:
-            logging.info(f"Torrent {torrent.name} is not completed yet.")
+            logging.debug(f"Torrent {torrent.name} is not completed yet.")
             
 def loop():
     try:
@@ -151,7 +151,7 @@ def loop():
         session.close()
         engine.dispose()
         qbt_client.auth_log_out()
-        logging.info("Session closed.")
+        logging.debug("Session closed.")
         
 while True:
     logging.info("Starting hardlinker loop.")
