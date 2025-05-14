@@ -111,7 +111,7 @@ def hard_linker():
                     # Check if the file is a .mkv file
                     if file.name.endswith(".mkv"):
                         # Create the destination path
-                        dest_path = os.path.join(destination_path, file.name)
+                        dest_path = os.path.join(destination_path, file.name.replace(f"{torrent.name}/", ""))
                         # Create a hardlink to the file
                         src_path = os.path.join(origin_path, file.name)
                         try:
